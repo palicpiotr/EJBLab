@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable var="res" value="#{petsBean.getAllPets()}"
+                         border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header"> Id </f:facet>
+                    <h:outputText value="#{res.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Name </f:facet>
+                    <h:outputText value="#{res.name}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Owner </f:facet>
+                    <h:outputText value="#{res.owner}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Species</f:facet>
+                    <h:outputText value="#{res.species}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Sex</f:facet>
+                    <h:outputText value="#{res.sex}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Date birth</f:facet>
+                    <h:outputText value="#{res.birth}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Date death</f:facet>
+                    <h:outputText value="#{res.death}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

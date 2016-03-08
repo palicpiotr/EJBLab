@@ -5,7 +5,9 @@
  */
 package palic.dao;
 
+import java.util.List;
 import javax.ejb.Local;
+import palic.model.Pet;
 
 /**
  *
@@ -14,6 +16,6 @@ import javax.ejb.Local;
 @Local
 public interface PetsDAOLocal {
 
-    void businessMethod(int id);
-    
+    List<Pet> getPets();
+
 }
