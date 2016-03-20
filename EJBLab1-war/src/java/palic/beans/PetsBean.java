@@ -6,11 +6,10 @@
 package palic.beans;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import palic.dao.PetsDAO;
+import javax.inject.Named;
 import palic.dao.PetsDAOLocal;
 import palic.model.Pet;
 
@@ -19,6 +18,7 @@ import palic.model.Pet;
  * @author Piotr
  */
 @RequestScoped
+@Named
 public class PetsBean implements Serializable {
 
     @EJB

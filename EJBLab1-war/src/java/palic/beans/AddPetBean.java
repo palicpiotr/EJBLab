@@ -8,7 +8,10 @@ package palic.beans;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.ConversationScoped;
+import javax.inject.Inject;
+
+import javax.inject.Named;
 import palic.dao.PetStatefullLocalDAOLocal;
 import palic.model.Pet;
 
@@ -16,12 +19,19 @@ import palic.model.Pet;
  *
  * @author Piotr
  */
-@SessionScoped
+@ConversationScoped //dialog context
+@Named
 public class AddPetBean implements Serializable {
 
-    @EJB
     private PetStatefullLocalDAOLocal petStatefullLocalDAOLocal;
 
+    public AddPetBean(){
+        
+    }
+    @Inject
+    public AddPetBean(PetStatefullLocalDAOLocal petStatefullLocalDAOLocal){
+        
+    }
     private int id;
     private String name;
     private String owner;
@@ -94,6 +104,8 @@ public class AddPetBean implements Serializable {
         this.birth = birth;
         this.death = death;
     }
+    
+
 
     public String AddPet() {
         Pet pet = new Pet();

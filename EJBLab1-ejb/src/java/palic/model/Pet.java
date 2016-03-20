@@ -5,13 +5,14 @@
  */
 package palic.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Piotr
  */
-public class Pet {
+public class Pet implements Serializable{
 
     private int id;
     private String name;

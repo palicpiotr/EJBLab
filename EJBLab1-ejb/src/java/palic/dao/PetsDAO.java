@@ -25,6 +25,7 @@ import palic.model.Pet;
 public class PetsDAO implements PetsDAOLocal {
 
     @Resource(lookup = "jdbc/myZoo")
+    
     private DataSource dataSource;
 
     @Override
