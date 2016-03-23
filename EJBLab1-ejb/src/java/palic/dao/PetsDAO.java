@@ -21,7 +21,7 @@ import palic.model.Pet;
  * @author Piotr
  */
 @Stateless
-@Local(PetsDAOLocal.class)
+//@Local(PetsDAOLocal.class)
 public class PetsDAO implements PetsDAOLocal {
 
     @Resource(lookup = "jdbc/myZoo")

@@ -16,7 +16,7 @@
     public void init() {
         try {
             InitialContext ic = new InitialContext();
-            values = (ListElementsRemoteStatefull)ic.lookup("java:global/EJBLab1/ListElementsStateFullDAO/");
+            values = (ListElementsRemoteStatefull)ic.lookup("java:global/EJBLab1/palic/dao/ListElementsStateFullDAO/");
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -42,7 +42,7 @@
     </head>
     <body>
         <h1>Welcome</h1>
-        <form name="form1" method="post">
+        <form name="ABC" method="post">
             <input type="text" name="t1"><br/>
             <input type="submit" value="Add" name="addNumber"><br/>
             <input type="submit" value="Remove" name="removeNumber"><br/>

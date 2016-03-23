@@ -2,114 +2,103 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Add new Pet</title>
+        <title>Facelet Title</title>
     </h:head>
     <h:body>
-         <f:view>
-            <h:form>
-                <table width="100%"    height="100%">
-                    <tr><td width="10%"></td>
-                        <td>
-                            <h1>
-                                Create new Pet
-                            </h1>
+        <h:form>
+            <table>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Name" for="name"/>
+                    </th>
+                    <th>
+                        <h:inputText id="name" value="#{addPetBean.pet.name}" required="true">  
+                        </h:inputText>                                                                   
 
-                            <table height="15" width="100">
-                                <tr></tr>
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="name" for="name"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="name" value="#{addPetBean.name}" label="Name">
-                                            <f:validateLength minimum="10" maximum="20"/>
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="name" style="color: red"/>
-                                    </th>
-                                </tr>
+                    </th>
+                    <th>
+                        <h:message for="name" style="color:red" /> 
+                    </th>
+                </tr>
 
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="owner" for="owner"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="owner" value="#{addPetBean.owner}" required="true">
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="owner" style="color: red"/>
-                                    </th>
-                                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Owner" for="owner"/>
+                    </th>
+                    <th>
+                        <h:inputText id="owner" value="#{addPetBean.pet.owner}" required="true">
+                        </h:inputText>                                                                   
+                    </th>
+                    <th>
+                        <h:message for="owner" style="color:red" /> 
+                    </th>
+                </tr> 
 
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="species" for="species"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="species" value="#{addPetBean.species}" required="true">
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="species" style="color: red"/>
-                                    </th>
-                                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Species" for="species"/>
+                    </th>
+                    <th>
+                        <h:inputText id="species" value="#{addPetBean.pet.species}" required="true">
+                        </h:inputText>                                                                   
+                    </th>
+                    <th>
+                        <h:message for="species" style="color:red" /> 
+                    </th>
+                </tr> 
 
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="sex" for="sex"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="sex" value="#{addPetBean.sex}" required="true">
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="sex" style="color: red"/>
-                                    </th>
-                                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Sex" for="sex"/>
+                    </th>
+                    <th>
+                        <h:inputText id="sex" value="#{addPetBean.pet.sex}" required="true">
+                        </h:inputText>                                                                   
+                    </th>
+                    <th>
+                        <h:message for="sex" style="color:red" /> 
+                    </th>
+                </tr> 
 
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="birth" for="birth"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="birth" value="#{addPetBean.birth}" required="true">
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="birth" style="color: red"/>
-                                    </th>
-                                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Birth Date" for="birthDate"/>
+                    </th>
+                    <th>
+                        <h:inputText id="birthDate" value="#{addPetBean.pet.birth}" required="true"> 
+                            <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                        </h:inputText>                                                                  
+                    </th>
+                    <th>
+                        <h:message for="birthDate" style="color:red" /> 
+                    </th>
+                </tr>
 
-                                <tr>
-                                    <th align="right" width="10%">
-                                        <h:outputLabel value="death" for="death"/>
-                                    </th>
-                                    <th align="left">
-                                        <h:inputText id="death" value="#{addPetBean.death}" required="true">
-                                        </h:inputText>
-                                    </th>
-                                    <th>
-                                        <h:message for="death" style="color: red"/>
-                                    </th>
-                                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Death Date" for="deathDate"/>
+                    </th>
+                    <th>
+                        <h:inputText id="deathDate" value="#{addPetBean.pet.death}" required="true"> 
+                            <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                        </h:inputText>                                                                  
+                    </th>
+                    <th>
+                        <h:message for="deathDate" style="color:red" /> 
+                    </th>
+                </tr>
 
-                                <tr> 
-                                    <th></th> 
-                                    <th align="left"> 
-                                        <h:commandButton class="button" onmouseover="this.style.background = '#0077CC';this.style.color = 'white'" onmouseout="this.style.background = 'white';this.style.color = '#0077CC'" value="Add" action="#{addPetBean.addPet()}"/> 
-                                    </th> 
-                                </tr> 
-
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </h:form>
-        </f:view>
+                <tr>
+                    <th></th>
+                    <th>
+                        <h:commandLink value="Add pet" action="#{addPetBean.add()}"/>
+                    </th>
+                </tr>
+            </table>
+        </h:form>
     </h:body>
 </html>
 

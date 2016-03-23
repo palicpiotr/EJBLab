@@ -5,18 +5,13 @@
  */
 package palic.dao;
 
-import java.util.List;
 import javax.ejb.Local;
-import palic.model.Pet;
 
 /**
  *
  * @author Piotr
  */
-
 @Local
-public interface PetsDAOLocal {
-
-    List<Pet> getPets();
-
+public interface CounterLocalLocal {
+   public int getHits(); 
 }

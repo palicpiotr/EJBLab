@@ -8,5 +8,9 @@
         <managed-bean-class>palic.beans.PetsBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-   
+    <managed-bean>
+        <managed-bean-name>hitsBean</managed-bean-name>
+        <managed-bean-class>palic.beans.HitsBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

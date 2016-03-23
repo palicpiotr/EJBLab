@@ -6,10 +6,10 @@
 package palic.beans;
 
 import java.io.Serializable;
-import java.sql.Date;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.ConversationScoped;
-import javax.inject.Inject;
+import javax.enterprise.context.SessionScoped;
 
 import javax.inject.Named;
 import palic.dao.PetStatefullLocalDAOLocal;
@@ -19,26 +19,24 @@ import palic.model.Pet;
  *
  * @author Piotr
  */
-@ConversationScoped //dialog context
+//@ConversationScoped //dialog context
+@SessionScoped
 @Named
 public class AddPetBean implements Serializable {
 
+    @EJB
     private PetStatefullLocalDAOLocal petStatefullLocalDAOLocal;
 
-    public AddPetBean(){
-        
+  
+     @PostConstruct
+    private void initBean() {
+        count = 0;
+        pet = new Pet();
     }
-    @Inject
-    public AddPetBean(PetStatefullLocalDAOLocal petStatefullLocalDAOLocal){
-        
-    }
+    private int count;
+    private Pet pet;
     private int id;
-    private String name;
-    private String owner;
-    private String species;
-    private String sex;
-    private Date birth;
-    private Date death;
+    private int localId;
 
     public int getId() {
         return id;
@@ -47,76 +45,40 @@ public class AddPetBean implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Date getBirth() {
-        return birth;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
-
-    public Date getDeath() {
-        return death;
-    }
-
-    public void setDeath(Date death) {
-        this.death = death;
-    }
-
-    public AddPetBean(String name, String owner, String species, String sex, Date birth, Date death) {
-        this.name = name;
-        this.owner = owner;
-        this.species = species;
-        this.sex = sex;
-        this.birth = birth;
-        this.death = death;
-    }
     
+    public int getCount() {
+        return count;
+    }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-    public String AddPet() {
-        Pet pet = new Pet();
-        pet.setName(name);
-        pet.setOwner(owner);
-        pet.setSpecies(species);
-        pet.setSex(sex);
-        pet.setBirth(birth);
-        pet.setDeath(death);
-        petStatefullLocalDAOLocal.addPet(pet);
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+   public String add() {
+        
+        //java.sql.Date newDate = new java.sql.Date(new Date().getTime());
+        java.sql.Date newDate = new java.sql.Date(pet.getBirth().getTime());
+        java.sql.Date newDate1 = new java.sql.Date(pet.getDeath().getTime());
+        pet.setBirth(newDate);
+        pet.setBirth(newDate1);
+        this.count = petStatefullLocalDAOLocal.addPet(pet);
         return "/AllPets.xhtml";
     }
 
+   public String toEdit(int id) throws Exception{
+        localId = id;
+        return "/EditPets.xhtml";
+    }
+
+    public String editPet() throws Exception {   
+        this.petStatefullLocalDAOLocal.editPet(pet);
+        return "/AllPets.xhtml";
+    }
 }

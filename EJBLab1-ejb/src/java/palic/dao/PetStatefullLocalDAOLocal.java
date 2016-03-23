@@ -16,4 +16,5 @@ import palic.model.Pet;
 public interface PetStatefullLocalDAOLocal {
     
     public int addPet(Pet pet);
+    public int editPet(Pet pet) throws Exception;
 }

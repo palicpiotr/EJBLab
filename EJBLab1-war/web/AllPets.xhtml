@@ -9,41 +9,53 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:dataTable var="res" value="#{petsBean.getAllPets()}"
-                         border="1" cellpadding="2" cellspacing="2">
-                <h:column>
-                    <f:facet name="header"> Id </f:facet>
-                    <h:outputText value="#{res.id}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header"> Name </f:facet>
-                    <h:outputText value="#{res.name}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header"> Owner </f:facet>
-                    <h:outputText value="#{res.owner}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header"> Species</f:facet>
-                    <h:outputText value="#{res.species}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Sex</f:facet>
-                    <h:outputText value="#{res.sex}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header"> Date birth</f:facet>
-                    <h:outputText value="#{res.birth}"></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Date death</f:facet>
-                    <h:outputText value="#{res.death}"></h:outputText>
-                </h:column>
-            </h:dataTable>
-            <br/><br/><br/>
+           <table width="100%" height="100%">
+                                <tr><td width="10%"></td>
+                                    <td>
+                                        <h1> 
+                                            Pets
+                                        </h1> 
+
+                                        <table height="15%" width="100%">  
+                                            <tr>
+                                                <td style="display:none;"><b> Номер группы </b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Name </b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Owner</b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Species </b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Sex </b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Date Birth </b></td>
+                                                <td style="border-bottom: 2px solid #0077CC"><b> Date Death </b></td>
+                                                <td> </td>
+                                                <td> </td>
+
+
+
+                                            </tr> 
+                                            <c:forEach items="#{petsBean.allPets}" var="pet">
+                                                <tr> 
+                                                    <td> #{pet.name} </td>                       
+                                                    <td> #{pet.owner} </td>
+                                                    <td> #{pet.species} </td> 
+                                                    <td> #{pet.sex} </td>
+                                                    <td> #{pet.birth} </td>
+                                                    <td> #{pet.death} </td>
+
+
+                                                    <td><h:commandButton class="button" 
+                                                                         onmouseover="this.style.background = '#0077CC';this.style.color = 'white'" onmouseout="this.style.background = 'white';this.style.color = '#0077CC'" action="#{addPetBean.toEdit(pet.id)}" value="Edit"/></td>
+
+                                                </tr> 
+                                            </c:forEach>
+                                        </table>
+                                       
+                                    </td>
+                                    <td width="10%"></td></tr>
+                            </table>
             <a href="AddNewPet.xhtml" style="color:#0077CC">Create new Pet </a>
             <br/>
             <a href="Elements.jsp" style="color:#0077CC">Another application </a>
+            <br/>
+            <a href="Hits.xhtml" style="color:#0077CC">Press</a>
         </h:form>
     </h:body>
 </html>
